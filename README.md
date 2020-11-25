@@ -2,8 +2,9 @@
 
 ## Font family de la aplicación:
 
-- Títulos en: Playlist
-- Textos: Raleyway
+- Logo en: Playlist
+- Título: Raleyway
+- texto: SpecialElite-Regular
 
 ## Colores básicos de la aplicación:
 
