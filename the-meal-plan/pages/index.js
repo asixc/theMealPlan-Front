@@ -1,9 +1,21 @@
 import Head from 'next/head'
 import styles from '../styles/Home.module.css'
 import Image from 'next/image'
+import { useState } from 'react'
 
 export default function Home() {
-
+  const [emailUser, setEmail] = useState('');
+  const [userPass, setPass] = useState('');
+  const login  = e =>{
+    e.preventDefault();
+    console.log(userLogin);
+    console.log(userPass);
+  }
+  const _renderButton = () =>{
+    console.log(emailUser, userPass);
+    console.log(emailUser && emailUser.length >3 && userPass && userPass.length > 3);
+    return emailUser && emailUser.length >3 && userPass && userPass.length > 3;
+  }
   return (
     <div className={styles.container}>
       <Head>
@@ -18,15 +30,32 @@ export default function Home() {
 
         <div className={styles.grid}>
           <div className={styles.card}>
-            <h4><label for="user">Usuario</label></h4>
-            <input type="mail" id="user" name="user" />
-            <h4><label for="user">Contraseña</label></h4>
-            <input type="password" id="pass" name="pass" />
+            <form onSubmit={login}>
+              <h4><label for="user">Usuario</label></h4>
+              <input 
+                type="mail" 
+                id="user" 
+                name="user" 
+                autoComplete="off"
+                value={emailUser}
+                onChange={({target}) => setEmail(target.value)} 
+              />
+              <h4><label for="user">Contraseña + {emailUser}</label></h4>
+              <input 
+                type="password"
+                id="pass" 
+                name="pass" 
+                value={userPass}
+                onChange={({target}) => setPass(target.value)} />
+                
+
+              <div className={styles.options}>
+                 <button><a href="recuperar-contraseña"><p>¡Accede!</p></a></button>
+                
+              </div>
+            </form>  
           </div>
-          <div className={styles.options}>
-            <p>Olvidaste la contraseña</p>
-            <p>Resgitrarse</p>
-          </div>
+          
         </div>
       </main>
 
